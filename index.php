@@ -38,21 +38,26 @@
 	];
 
 	// homework
-	function filter($items, $fn)
-	{
-		$filteredItems = [];
+	// function filter($items, $fn)
+	// {
+	// 	$filteredItems = [];
 
-		foreach ($items as $item) {
-			if ($fn($item)) {
-				$filteredItems[] = $item;
-			}
-		}
+	// 	foreach ($items as $item) {
+	// 		if ($fn($item)) {
+	// 			$filteredItems[] = $item;
+	// 		}
+	// 	}
 
-		return $filteredItems;
-	}
+	// 	return $filteredItems;
+	// }
 
-	$filteredBooks = filter($books, function ($book) {
-		return $book['releaseYear'] >= '1950' && $book['releaseYear'] <= '2020' && $book['author'] === 'Andy Weir';
+	// $filteredBooks = filter($books, function ($book) {
+	// 	// return $book['releaseYear'] >= '1950' && $book['releaseYear'] <= '2020' && $book['author'] === 'Andy Weir';
+	// 	return $book['releaseYear'] >= '1990';
+	// });
+
+	$filteredBooks = array_filter($books, function ($book) {
+		return $book['releaseYear'] >= 1950 && $book['releaseYear'] <= 2020 && $book['author'] === 'Andy Weir';
 	});
 
 
@@ -60,20 +65,20 @@
 
 	<ol>
 		<?php if ($books) : ?>
-		<?php foreach ($filteredBooks as $book) : ?>
-		<li>
-			<div>
-				<h4><?= $book['bookName'] ?> - (<?= $book['releaseYear'] ?>)</h4>
-				<p>Author: <?= $book['author'] ?></p>
-				<p>
-					<a href="<?= $book['purchaseUrl'] ?>">Purchase</a>
-				</p>
-			</div>
-			<hr>
-		</li>
-		<?php endforeach ?>
+			<?php foreach ($filteredBooks as $book) : ?>
+				<li>
+					<div>
+						<h4><?= $book['bookName'] ?> - (<?= $book['releaseYear'] ?>)</h4>
+						<p>Author: <?= $book['author'] ?></p>
+						<p>
+							<a href="<?= $book['purchaseUrl'] ?>">Purchase</a>
+						</p>
+					</div>
+					<hr>
+				</li>
+			<?php endforeach ?>
 		<?php else : ?>
-		<p>No Books here</p>
+			<p>No Books here</p>
 		<?php endif ?>
 	</ol>
 </body>
