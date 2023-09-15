@@ -23,10 +23,10 @@ class Database
 		return $statement;
 	}
 
-	public function queryOne($query)
+	public function queryOne($query, $params = [])
 	{
 		$statement = $this->connection->prepare($query);
-		$statement->execute();
+		$statement->execute($params);
 
 		return $statement;
 	}
