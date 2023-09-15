@@ -8,12 +8,15 @@ require('Database.php');
 $config = require('config.php');
 
 $db = new Database($config['database']);
-$posts = $db->queryAll("select * from posts")->fetchAll();
+$posts = $db->queryAll("select * from notes")->fetchAll();
 
 foreach ($posts as $post) {
-	echo "<br>" . $post['title'] . "<br />";
+	echo "<br>" . $post['body'] . "<br />";
 }
 
-$post = $db->queryOne("select * from posts where id = 1")->fetch();
+$id = $_GET['id'];
+$query = "select * from notes where id = ?";
 
-dd($post['title']);
+$post = $db->queryOne($query, [$id])->fetch();
+
+dd($post['body']);
