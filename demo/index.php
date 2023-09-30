@@ -14,9 +14,9 @@ foreach ($posts as $post) {
 	echo "<br>" . $post['body'] . "<br />";
 }
 
-$id = $_GET['id'];
-$query = "select * from notes where id = ?";
+// $id = $_GET['id'];
+// $query = "select * from notes where id = ?";
 
-$post = $db->queryOne($query, [$id])->fetch();
+// $post = $db->queryOne($query, [$id])->fetch();
 
-dd($post['body']);
+// dd($post['body']);
